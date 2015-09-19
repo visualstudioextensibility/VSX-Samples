@@ -62,7 +62,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="index.html" />
     <Content Include="Resources\VSIXPackage.ico" />
     <Content Include="stylesheet.css" />
   </ItemGroup>
