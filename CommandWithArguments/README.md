@@ -5,7 +5,7 @@ By default, the commands that you create for Visual Studio don't accept paramete
 
 To accept parameters, four steps are required:
 
-* Step 1: Add the <CommandFlag>AllowParams</CommandFlag> in the .vsct file for the command
-* Step 2: Use an OleMenuCommand, not a MenuCommand
-* Step 3: Add a non-empty description for the parameter
-* Step 4: Cast EventArgs to OleMenuCmdEventArgs to get the argument value
+* Step 1: Add the AllowParams command flag in the .vsct file for the command
+* Step 2: When creating the menu command, use an OleMenuCommand type, not a MenuCommand type
+* Step 3: Fill the ParametersDescription property of the OleMenuCommand with a non-empty description
+* Step 4: In the MenuItemCallback method, cast EventArgs to OleMenuCmdEventArgs to get the argument value
