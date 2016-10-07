@@ -32,9 +32,9 @@ namespace CommandWithArguments
             // Step 2: Use an OleMenuCommand, not a MenuCommand
             var oleMenuCommand = new OleMenuCommand(this.MenuItemCallback, menuCommandID);
 
-            // Step 3: Add a non-empty description for the parameter
-            // IMPORTANT: this line is required for a command to accept parameters
-            oleMenuCommand.ParametersDescription = "Description for argument";
+            // Step 3: Initialize the ParametersDescription property to the "$" value.
+            // That magical value means that the command accepts any kind of values
+            oleMenuCommand.ParametersDescription = "$";
 
             commandService.AddCommand(oleMenuCommand);
          }
