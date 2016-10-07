@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+   <Extern href="stdidcmd.h"/>
+   <Extern href="vsshlids.h"/>
+
+   <Commands package="guidVSPackageCommandWithArguments">
+
+      <Groups>
+         <Group guid="guidVSPackageCommandWithArgumentsCmdSet" id="MyMenuGroup" priority="0x0600">
+            <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+         </Group>
+      </Groups>
+
+      <Buttons>
+
+         <Button guid="guidVSPackageCommandWithArgumentsCmdSet" id="CommandWithArgumentsId" priority="0x0100" type="Button">
+            <Parent guid="guidVSPackageCommandWithArgumentsCmdSet" id="MyMenuGroup" />
+            <!-- Step 1: Add the AllowParams command flag -->
+            <CommandFlag>AllowParams</CommandFlag>
+            <Strings>
+               <ButtonText>CommandWithArguments</ButtonText>
+            </Strings>
+         </Button>
+      </Buttons>
+
+   </Commands>
+
+   <Symbols>
+
+      <GuidSymbol name="guidVSPackageCommandWithArguments" value="{8c756339-2f14-43b7-becc-5da3c229ad49}" />
+
+      <GuidSymbol name="guidVSPackageCommandWithArgumentsCmdSet" value="{1ce3ba1f-07bd-41be-93c8-831fc64fd7d4}">
+         <IDSymbol name="MyMenuGroup" value="0x1020" />
+         <IDSymbol name="CommandWithArgumentsId" value="0x0100" />
+      </GuidSymbol>
+
+   </Symbols>
+</CommandTable>
