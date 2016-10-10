@@ -4,13 +4,13 @@ using System.Globalization;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
-namespace CommandSolutionContextMenu
+namespace CommandCodeWindowContextMenu
 {
    internal sealed class Command1
    {
       public const int CommandId = 0x0100;
 
-      public static readonly Guid CommandSet = new Guid("42d8467b-0102-4e3f-964c-dbedf18b2323");
+      public static readonly Guid CommandSet = new Guid("0c1acc31-15ac-417c-86b2-eefdc669e8bf");
 
       private readonly Package package;
 
@@ -56,11 +56,11 @@ namespace CommandSolutionContextMenu
          string message;
          string title = "Command1";
          EnvDTE.DTE dte;
-         EnvDTE.Solution solution;
+         EnvDTE.Document activeDocument;
 
          dte = (EnvDTE.DTE)this.ServiceProvider.GetService(typeof(EnvDTE.DTE));
-         solution = dte.Solution;
-         message = $"Called on {solution.FullName}";
+         activeDocument = dte.ActiveDocument;
+         message = $"Called on {activeDocument.FullName}";
 
          // Show a message box to prove we were here
          VsShellUtilities.ShowMessageBox(
