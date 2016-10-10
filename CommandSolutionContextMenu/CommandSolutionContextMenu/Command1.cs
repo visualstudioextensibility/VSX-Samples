@@ -53,8 +53,14 @@ namespace CommandSolutionContextMenu
 
       private void MenuItemCallback(object sender, EventArgs e)
       {
-         string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
+         string message;
          string title = "Command1";
+         EnvDTE.DTE dte;
+         EnvDTE.Solution solution;
+
+         dte = (EnvDTE.DTE)this.ServiceProvider.GetService(typeof(EnvDTE.DTE));
+         solution = dte.Solution;
+         message = $"Called on {solution.FullName}";
 
          // Show a message box to prove we were here
          VsShellUtilities.ShowMessageBox(
