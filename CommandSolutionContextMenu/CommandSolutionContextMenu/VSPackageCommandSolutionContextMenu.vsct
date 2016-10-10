@@ -48,6 +48,7 @@
 
       <GuidSymbol name="guidVSPackageCommandSolutionContextMenuCmdSet" value="{42d8467b-0102-4e3f-964c-dbedf18b2323}">
          <IDSymbol name="MyGroupForCommands" value="0x1020" />
+         <!-- Warning!!: Keep the value in sync with the code in Command1.cs -->
          <IDSymbol name="Command1Id" value="0x0100" />
       </GuidSymbol>
 

@@ -79,6 +79,7 @@
          <IDSymbol name="MyGroupForSubmenu" value="0x1020" />
          <IDSymbol name="MyGroupForCommands" value="0x1021" />
          <IDSymbol name="MySubmenu" value="0x0100" />
+         <!-- Warning!!: Keep the values in sync with the code in Command1.cs, Command2.cs -->
          <IDSymbol name="Command1Id" value="0x0101" />
          <IDSymbol name="Command2Id" value="0x0102" />
       </GuidSymbol>
