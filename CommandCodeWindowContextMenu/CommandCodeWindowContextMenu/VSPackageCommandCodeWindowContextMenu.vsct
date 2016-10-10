@@ -10,7 +10,7 @@
       </Groups>
 
       <Buttons>
-         <Button guid="guidVSPackageCommandCodeWindowContextMenuCmdSet" id="Command1Id" priority="0x0100" type="Button">
+         <Button guid="guidVSPackageCommandCodeWindowContextMenuCmdSet" id="Command1Id" type="Button">
             <Icon guid="guidImages" id="bmpPic1" />
             <Strings>
                <ButtonText>Command1</ButtonText>
@@ -23,7 +23,7 @@
       </Bitmaps>
    </Commands>
 
-     <CommandPlacements>
+   <CommandPlacements>
 
       <!-- Placement for group. The parent of a group is a menu, context menu or toolbar. 
            The priority sets the position of the group compared to the priority of other existing groups in the menu.    
@@ -38,7 +38,7 @@
          <Parent guid="guidVSPackageCommandCodeWindowContextMenuCmdSet" id="MyGroupForCommands"/>
       </CommandPlacement>
    </CommandPlacements>
- 
+
    <Symbols>
       <GuidSymbol name="guidVSPackageCommandCodeWindowContextMenu" value="{7e37eef9-8cbe-4b10-81f7-66413cd2c9d3}" />
 

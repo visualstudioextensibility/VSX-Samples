@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+   <Extern href="stdidcmd.h"/>
+   <Extern href="vsshlids.h"/>
+
+   <Commands package="guidVSPackageCommandProjectContextMenu">
+      <Groups>
+         <Group guid="guidVSPackageCommandProjectContextMenuCmdSet" id="MyGroupForCommands" />
+      </Groups>
+
+      <Buttons>
+         <Button guid="guidVSPackageCommandProjectContextMenuCmdSet" id="Command1Id" type="Button">
+            <Icon guid="guidImages" id="bmpPic1" />
+            <Strings>
+               <ButtonText>Command1</ButtonText>
+            </Strings>
+         </Button>
+      </Buttons>
+
+      <Bitmaps>
+         <Bitmap guid="guidImages" href="Resources\Command1.png" usedList="bmpPic1"/>
+      </Bitmaps>
+   </Commands>
+
+   <CommandPlacements>
+
+      <!-- Placement for group. The parent of a group is a menu, context menu or toolbar. 
+           The priority sets the position of the group compared to the priority of other existing groups in the menu.    
+      -->
+      <CommandPlacement guid="guidVSPackageCommandProjectContextMenuCmdSet" id="MyGroupForCommands" priority="0xFFFF">
+         <!-- The parent of the group will be the project context menu -->
+         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidVSPackageCommandProjectContextMenuCmdSet" id="MyGroupForCommands" priority="0xFFFF">
+         <!-- The parent of the group will be the Web project context menu -->
+         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBPROJECT"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidVSPackageCommandProjectContextMenuCmdSet" id="MyGroupForCommands" priority="0xFFFF">
+         <!-- The parent of the group will be the project context menu when more than one project is selected-->
+         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_XPROJ_MULTIPROJ"/>
+      </CommandPlacement>
+
+      <!-- Placement for command. The parent of a command is always a group, never a menu, context menu or toolbar. -->
+      <CommandPlacement guid="guidVSPackageCommandProjectContextMenuCmdSet" id="Command1Id" priority="0x0001" >
+         <Parent guid="guidVSPackageCommandProjectContextMenuCmdSet" id="MyGroupForCommands"/>
+      </CommandPlacement>
+   </CommandPlacements>
+
+   <Symbols>
+      <GuidSymbol name="guidVSPackageCommandProjectContextMenu" value="{069acb34-c12c-4e1c-ae69-1f9295046c84}" />
+
+      <GuidSymbol name="guidVSPackageCommandProjectContextMenuCmdSet" value="{9a55a2b4-3e29-4359-882b-fa5f51c09300}">
+         <IDSymbol name="MyGroupForCommands" value="0x1020" />
+         <IDSymbol name="Command1Id" value="0x0100" />
+      </GuidSymbol>
+
+      <GuidSymbol name="guidImages" value="{740507d9-7a30-4059-989e-f0ea6ab719da}" >
+         <IDSymbol name="bmpPic1" value="1" />
+      </GuidSymbol>
+   </Symbols>
+</CommandTable>
