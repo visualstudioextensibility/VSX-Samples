@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+   <Extern href="stdidcmd.h" />
+   <Extern href="vsshlids.h" />
+
+   <Commands package="guidVSPackageContextMenu">
+
+      <Menus>
+         <Menu guid="guidVSPackageContextMenuCmdSet" id="MyContextMenuId" type="Context">
+            <Strings>
+               <MenuText>My context menu</MenuText>
+               <ButtonText>My context menu</ButtonText>
+            </Strings>
+         </Menu>
+      </Menus>
+
+      <Groups>
+         <Group guid="guidVSPackageContextMenuCmdSet" id="MyGroupForCommandsOnContextMenu" />
+      </Groups>
+
+      <Buttons>
+         <Button guid="guidVSPackageContextMenuCmdSet" id="ToolWindowCommandId" type="Button">
+            <Icon guid="guidImages" id="bmpPicSearch" />
+            <Strings>
+               <ButtonText>My ToolWindow</ButtonText>
+            </Strings>
+         </Button>
+
+         <Button guid="guidVSPackageContextMenuCmdSet" id="Command1Id" type="Button">
+            <Icon guid="guidImages" id="bmpPic1" />
+            <Strings>
+               <ButtonText>Invoke Command1</ButtonText>
+            </Strings>
+         </Button>
+
+         <Button guid="guidVSPackageContextMenuCmdSet" id="Command2Id" type="Button">
+            <Icon guid="guidImages" id="bmpPic2" />
+            <Strings>
+               <ButtonText>Invoke Command2</ButtonText>
+            </Strings>
+         </Button>
+      </Buttons>
+
+      <Bitmaps>
+         <Bitmap guid="guidImages" href="Resources\Images.png" usedList="bmpPic1, bmpPic2, bmpPicSearch" />
+      </Bitmaps>
+
+   </Commands>
+
+      <CommandPlacements>
+      
+      <!-- Placement for groups and menus.
+           The parent of a group is a menu, context menu or toolbar.
+           The priority sets the position of the group compared to the priority of other existing groups in the menu.
+           The order is: Toolbar or Menu > MyGroupForSubmenu > MySubmenu > MyGroupForCommands > Command1Id, Command2Id
+      -->
+      <CommandPlacement guid="guidVSPackageContextMenuCmdSet" id="MyGroupForCommandsOnContextMenu" priority="0x0001">
+         <!-- The parent of the group will be the context menu -->
+         <Parent guid="guidVSPackageContextMenuCmdSet" id="MyContextMenuId"/>
+      </CommandPlacement>
+
+      <!-- Placement for commands.
+           The parent of a command is always a group, never a menu, context menu or toolbar.
+      -->
+         
+      <!-- The command to show the toolwindow will be on the View > Other Windows submenu -->      
+      <CommandPlacement guid="guidVSPackageContextMenuCmdSet" id="ToolWindowCommandId" priority="0x0100" >
+         <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
+      </CommandPlacement>
+            
+      <!-- The commands of the context menu  -->      
+      <CommandPlacement guid="guidVSPackageContextMenuCmdSet" id="Command1Id" priority="0x0001" >
+         <Parent guid="guidVSPackageContextMenuCmdSet" id="MyGroupForCommandsOnContextMenu"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidVSPackageContextMenuCmdSet" id="Command2Id" priority="0x0002" >
+         <Parent guid="guidVSPackageContextMenuCmdSet" id="MyGroupForCommandsOnContextMenu"/>
+      </CommandPlacement>
+      
+   </CommandPlacements>
+   
+   <Symbols>
+
+      <GuidSymbol name="guidVSPackageContextMenu" value="{9a1f0ba6-7996-44d1-bf23-712cf7adbcf6}" />
+
+      <GuidSymbol name="guidVSPackageContextMenuCmdSet" value="{c1a3a312-e25a-4cd1-b557-011428323a99}" >
+         
+         <!-- Warning!!: Keep these values in sync with the code in ToolWindowCommand.cs, Command1.cs, Command2.cs -->
+         <IDSymbol name="ToolWindowCommandId" value="0x0100" />
+         <IDSymbol name="Command1Id" value="0x0101" />
+         <IDSymbol name="Command2Id" value="0x0102" />
+
+         <IDSymbol name="MyContextMenuId" value ="0x0200" />
+         
+         <IDSymbol name="MyGroupForCommandsOnContextMenu" value="0x0300" />
+      </GuidSymbol>
+
+      <GuidSymbol name="guidImages" value="{bcd99538-787f-4888-b4d3-921d968539de}">
+         <IDSymbol name="bmpPic1" value="1" />
+         <IDSymbol name="bmpPic2" value="2" />
+         <IDSymbol name="bmpPicSearch" value="3" />
+      </GuidSymbol>
+
+   </Symbols>
+
+</CommandTable>
