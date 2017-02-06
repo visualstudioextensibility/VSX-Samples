@@ -56,7 +56,8 @@
         <Parent guid="guidVSLocalizedPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>Invocar mi comando (es-ES)</ButtonText>
+           <LocCanonicalName>MiComando</LocCanonicalName>
+           <ButtonText>Invocar mi comando (es-ES)</ButtonText>
         </Strings>
       </Button>
     </Buttons>
