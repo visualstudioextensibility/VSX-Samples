@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+   <Extern href="stdidcmd.h" />
+   <Extern href="vsshlids.h" />
+   <Commands package="guidVSPackageCommandSubmenu">
+
+      <Groups>
+         <Group guid="guidVSPackageCommandSubmenuCmdSet" id="MyGroupForSubmenu" />
+         <Group guid="guidVSPackageCommandSubmenuCmdSet" id="MyGroupForCommands" />
+      </Groups>
+
+      <Menus>
+         <Menu guid="guidVSPackageCommandSubmenuCmdSet" id="MySubmenu" type="Menu">
+            <Strings>
+               <ButtonText>My submenu</ButtonText>
+            </Strings>
+         </Menu>
+      </Menus>
+      
+      <Buttons>
+         <Button guid="guidVSPackageCommandSubmenuCmdSet" id="Command1Id" type="Button">
+            <Icon guid="guidImages" id="bmpPic1" />
+            <Strings>
+               <ButtonText>Command1</ButtonText>
+            </Strings>
+         </Button>
+         <Button guid="guidVSPackageCommandSubmenuCmdSet" id="Command2Id" type="Button">
+            <Icon guid="guidImages" id="bmpPic2" />
+            <Strings>
+               <ButtonText>Command2</ButtonText>
+            </Strings>
+         </Button>
+      </Buttons>
+
+      <Bitmaps>
+         <Bitmap guid="guidImages" href="Resources\Commands.png" usedList="bmpPic1, bmpPic2" />
+      </Bitmaps>
+   </Commands>
+
+   <CommandPlacements>
+      
+      <!-- Placement for groups and menus.
+           The parent of a group is a menu, context menu or toolbar.
+           The parent of a submenu is always a group
+           The priority sets the position of the group compared to the priority of other existing groups in the menu.
+           The order is: Toolbar or Menu > MyGroupForSubmenu > MySubmenu > MyGroupForCommands > Command1Id, Command2Id
+      -->
+      <CommandPlacement guid="guidVSPackageCommandSubmenuCmdSet" id="MyGroupForSubmenu" priority="0xFFFF">
+         <!-- The parent of the group will be the solution context menu -->
+         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidVSPackageCommandSubmenuCmdSet" id="MyGroupForSubmenu" priority="0xFFFF">
+         <!-- The parent of the group will be also the standard toolbar -->
+         <Parent guid="guidSHLMainMenu" id="IDM_VS_TOOL_STANDARD"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidVSPackageCommandSubmenuCmdSet" id="MySubmenu" priority="0x0001">
+         <Parent guid="guidVSPackageCommandSubmenuCmdSet" id="MyGroupForSubmenu"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidVSPackageCommandSubmenuCmdSet" id="MyGroupForCommands" priority="0x0001">
+         <Parent guid="guidVSPackageCommandSubmenuCmdSet" id="MySubmenu"/>
+      </CommandPlacement>
+
+      <!-- Placement for commands.
+           The parent of a command is always a group, never a menu, context menu or toolbar.
+      -->
+      <CommandPlacement guid="guidVSPackageCommandSubmenuCmdSet" id="Command1Id" priority="0x0001" >
+         <Parent guid="guidVSPackageCommandSubmenuCmdSet" id="MyGroupForCommands"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidVSPackageCommandSubmenuCmdSet" id="Command2Id" priority="0x0002" >
+         <Parent guid="guidVSPackageCommandSubmenuCmdSet" id="MyGroupForCommands"/>
+      </CommandPlacement>
+   </CommandPlacements>
+   
+   <Symbols>
+      <GuidSymbol name="guidVSPackageCommandSubmenu" value="{d2cc7f26-42fb-4c8d-858f-05f3fc3599d5}" />
+
+      <GuidSymbol name="guidVSPackageCommandSubmenuCmdSet" value="{bea4976d-811a-4dd0-9745-0bed7a658b5d}">
+         <IDSymbol name="MyGroupForSubmenu" value="0x1020" />
+         <IDSymbol name="MyGroupForCommands" value="0x1021" />
+         <IDSymbol name="MySubmenu" value="0x0100" />
+         <!-- Warning!!: Keep the values in sync with the code in Command1.cs, Command2.cs -->
+         <IDSymbol name="Command1Id" value="0x0101" />
+         <IDSymbol name="Command2Id" value="0x0102" />
+      </GuidSymbol>
+
+      <GuidSymbol name="guidImages" value="{a156b47b-df48-4124-a918-ae1cd9492fcb}">
+         <IDSymbol name="bmpPic1" value="1" />
+         <IDSymbol name="bmpPic2" value="2" />
+      </GuidSymbol>
+
+   </Symbols>
+</CommandTable>

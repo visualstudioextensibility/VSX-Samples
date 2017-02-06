@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+   <Extern href="stdidcmd.h" />
+   <Extern href="vsshlids.h" />
+
+   <Commands package="guidVSPackageCommandTopMenu">
+
+      <Groups>
+         <Group guid="guidVSPackageCommandTopMenuCmdSet" id="MyGroupForCommands" />
+      </Groups>
+
+      <Menus>
+         <Menu guid="guidVSPackageCommandTopMenuCmdSet" id="MyTopMenu" type="Menu">
+            <Strings>
+               <ButtonText>My Top Menu</ButtonText>
+            </Strings>
+         </Menu>
+      </Menus>
+
+      <Buttons>
+         <Button guid="guidVSPackageCommandTopMenuCmdSet" id="Command1Id" type="Button">
+            <Icon guid="guidImages" id="bmpPic1" />
+            <Strings>
+               <ButtonText>Command1</ButtonText>
+            </Strings>
+         </Button>
+         <Button guid="guidVSPackageCommandTopMenuCmdSet" id="Command2Id" type="Button">
+            <Icon guid="guidImages" id="bmpPic2" />
+            <Strings>
+               <ButtonText>Command2</ButtonText>
+            </Strings>
+         </Button>
+      </Buttons>
+
+      <Bitmaps>
+         <Bitmap guid="guidImages" href="Resources\Commands.png" usedList="bmpPic1, bmpPic2" />
+      </Bitmaps>
+   </Commands>
+
+   <CommandPlacements>
+
+      <!-- Placement for groups and menus.
+           The parent of a group is a menu, context menu or toolbar.
+           The priority sets the position of the group compared to the priority of other existing groups in the menu.
+      -->
+
+      <CommandPlacement guid="guidVSPackageCommandTopMenuCmdSet" id="MyTopMenu" priority="775">
+         <!-- The parent of the top menu will be the main menu -->
+         <Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS"/>
+      </CommandPlacement>
+
+      <CommandPlacement guid="guidVSPackageCommandTopMenuCmdSet" id="MyGroupForCommands" priority="0x0001">
+         <!-- The parent of the group will be the top menu -->
+         <Parent guid="guidVSPackageCommandTopMenuCmdSet" id="MyTopMenu"/>
+      </CommandPlacement>
+
+      <!-- Placement for commands.
+           The parent of a command is always a group, never a menu, context menu or toolbar.
+      -->
+      <CommandPlacement guid="guidVSPackageCommandTopMenuCmdSet" id="Command1Id" priority="0x0001" >
+         <Parent guid="guidVSPackageCommandTopMenuCmdSet" id="MyGroupForCommands"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidVSPackageCommandTopMenuCmdSet" id="Command2Id" priority="0x0002" >
+         <Parent guid="guidVSPackageCommandTopMenuCmdSet" id="MyGroupForCommands"/>
+      </CommandPlacement>
+   </CommandPlacements>
+
+   <Symbols>
+      <GuidSymbol name="guidVSPackageCommandTopMenu" value="{cd803dc7-0b76-4fb6-b92e-6415591b66b8}" />
+
+      <GuidSymbol name="guidVSPackageCommandTopMenuCmdSet" value="{acf32b59-19bf-4492-b19b-2d359e74a69a}">
+         <IDSymbol name="MyTopMenu" value="0x1020" />
+         <IDSymbol name="MyGroupForCommands" value="0x1021" />
+         <!-- Warning!!: Keep the values in sync with the code in Command1.cs, Command2.cs -->
+         <IDSymbol name="Command1Id" value="0x0101" />
+         <IDSymbol name="Command2Id" value="0x0102" />
+      </GuidSymbol>
+
+      <GuidSymbol name="guidImages" value="{ac9ea1de-1fa3-4080-99a8-bf1ce3f7bcb1}">
+         <IDSymbol name="bmpPic1" value="1" />
+         <IDSymbol name="bmpPic2" value="2" />
+      </GuidSymbol>
+
+   </Symbols>
+</CommandTable>
